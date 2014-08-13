@@ -50,7 +50,7 @@ EXTRA_DIST = History wavlib.spec.in\
 rpm:	dist
 	cp wavlib-$(VERSION).tar.gz $(RPM_ROOT)/SOURCES/
 	$(RPMBUILD) -ba --target $(ARCH)-$(VENDOR)-linux wavlib.spec
-	mv $(RPM_ROOT)/RPMS/$(ARCH)/wavlib-$(VERSION)-@RPM_RELEASE@.$(ARCH).rpm $(top_srcdir)/
+	mv $(RPM_ROOT)/RPMS/$(ARCH)/wavlib-*.rpm $(top_srcdir)/
 	rm $(RPM_ROOT)/SOURCES/wavlib-$(VERSION).tar.gz
 	rm -rf $(RPM_ROOT)/BUILD/wavlib-$(VERSION)
 

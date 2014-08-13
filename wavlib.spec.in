@@ -1,7 +1,7 @@
 Summary: The WavLib Audio Utility Package
 Name: wavlib
 Version: %PKG_VERSION%
-Release: %RPM_RELEASE%
+Release: %RPM_RELEASE%%{?dist}
 License: GPL
 Group: Productivity/Multimedia/Other
 Source: ftp://ftp.salemradiolabs.com/pub/srlabs/wavlib/wavlib-%PKG_VERSION%.tar.gz
