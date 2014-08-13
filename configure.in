@@ -2,8 +2,8 @@ dnl configure.in
 dnl 
 dnl Use autoconf to process this into a configure script
 
-AC_INIT(wavlib,3.0.2,fredg@salemradiolabs.com)
-AM_INIT_AUTOMAKE(wavlib,3.0.2)
+AC_INIT(wavlib,3.0.3,fredg@salemradiolabs.com)
+AM_INIT_AUTOMAKE(wavlib,3.0.3)
 AC_SUBST(RPM_RELEASE,1)
 
 AC_PROG_CC
