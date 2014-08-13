@@ -1,0 +1,18 @@
+The 'list' chunk consists of the following fields:
+
+TAG	  BROADCAST	  STANDARD	
+--------------------------------------
+ICRD	  -----------	Creation Date
+IART	  Advertiser	Orig. Artist
+ICMT	  Comments	Comments
+ICOP	  Agency	Copyright
+IENG	  Producer	Engineer
+IGNR	  Start Date	Genre
+IKEY	  End Date	Key Words
+IMED	  ?		Orig. Medium
+INAM	  Outcue	Name
+ISFT	  Account Exec	Software Package
+ISRC	  Catgory	Source Supplier
+ITCH	  Talent	Digitizer
+ISBJ	  Copy		Subject
+ISRF	  ?		Digitzation Source

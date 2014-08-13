@@ -1,0 +1,26 @@
+.TH ameter 1 "May 2000" Linux "Linux Audio Manual"
+.SH NAME
+ameter \- Software Audio Meter
+.SH SYNOPSIS
+.B ameter [-v][-l <ref-level>][-t <thres-level>] <dsp-dev>
+
+.SH DESCRIPTION
+\fBAmeter\fP is an ncurses-based tool for dynamically displaying the audio level
+of a selected audio input.  Levels are indicated in decibels (dB) below
+sixteen bit "digital zero" --i.e. sample values of +/- 0x7FFF.
+
+.SH OPTIONS
+.TP
+.B \-v
+Print a version identifier and then exit.
+.TP
+.B \-l
+Set the level which is to correspond to the right-hand end of the meter, in
+dB below digital zero.
+.TP
+.B \-t
+Set the color threshold level, in dB below digital zero.  \fBAmeter\fP will
+move the dividing line between the green and red segments to this location.
+.
+.SH AUTHOR
+Fred Gleason <fredg@wava.com>

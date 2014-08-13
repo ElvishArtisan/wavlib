@@ -1,0 +1,17 @@
+2005-06-22 Fred Gleason <fredg@salemradiolabs.com>
+	* Initial CVS package creation from wavlib-2.4.2.
+2005-06-23 Fred Gleason <fredg@salemradiolabs.com>
+	* Added an mptrim(1) command.
+	* Added an mptrim(1) man page.
+	* Added a 'wavlib.spec.in' file.
+2008-05-06 Fred Gleason <fredg@paravelsystems.com>
+	* Added 'autogen.sh', 'get_target.sh', 'get_distro.sh' and
+	'acinclude.m4'.
+	* Incremented the package version 3.0.1.
+2011-05-27 Fred Gleason <fredg@paravelsystems.com>
+	* Fixed a bug in 'wavlib.c' that broke the build on CentOS/REdHat 5.
+2011-05-27 Fred Gleason <fredg@paravelsystems.com>
+	* Removed the 'gz' extension from man page entries in 'wavlib.spec'in'
+	to allow RPMs to build on CentOS/RedHat 5.
+2011-05-27 Fred Gleason <fredg@paravelsystems.com>
+	* Incremented the package version to 3.0.2.

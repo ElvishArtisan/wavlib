@@ -1,0 +1,46 @@
+dnl configure.in
+dnl 
+dnl Use autoconf to process this into a configure script
+
+AC_INIT(wavlib,3.0.2,fredg@salemradiolabs.com)
+AM_INIT_AUTOMAKE(wavlib,3.0.2)
+AC_SUBST(RPM_RELEASE,1)
+
+AC_PROG_CC
+
+AC_CHECK_LIB(ncurses,wrefresh,[],
+	[AC_MSG_ERROR([*** NCurses not found -- unable to continue ***])],[])
+
+#
+# Determine the target architecture
+#
+AR_GCC_TARGET()
+AC_SUBST(VENDOR,$ar_gcc_distro)
+AC_SUBST(ARCH,$ar_gcc_arch)
+
+#
+# Determine Distro
+#
+AR_GET_DISTRO()
+
+#
+# Configure RPM Build
+#
+AC_CHECK_PROG(RPMBUILD_FOUND,rpmbuild,[yes],[])
+if test -z $RPMBUILD_FOUND ; then
+  AC_SUBST(RPMBUILD,rpm)
+else
+  AC_SUBST(RPMBUILD,rpmbuild)
+fi
+sed -e s/%PKG_VERSION%/$VERSION/g -e s/%RPM_RELEASE%/$RPM_RELEASE/g wavlib.spec.in > wavlib.spec
+if test -d /usr/src/redhat ; then
+  AC_SUBST(RPM_ROOT,/usr/src/redhat)
+  AC_SUBST(VENDOR,redhat)
+else
+  AC_SUBST(RPM_ROOT,/usr/src/packages)
+  AC_SUBST(VENDOR,suse)
+fi 
+
+AC_OUTPUT(./Makefile \
+       doc/Makefile \
+)

@@ -1,0 +1,46 @@
+.TH agen 1 "October 1999" Linux "Linux Audio Manual"
+.SH NAME
+agen \- Software Audio Generator
+.SH SYNOPSIS
+.B agen [-v][-f <freq>][-l <level>][-c left|right|both][-p norm|rev]\
+[-t <secs>] <dsp-dev>
+
+.SH DESCRIPTION
+\fBAgen\fP is a command-line tool for producing audio test tones.
+
+.SH OPTIONS
+.TP
+.B \-v
+Print a version identifier and then exit.
+.TP
+.B \-f <freq>
+Output a tone of frequency \fI<freq>\fP Hz.  If not specified, a frequency of 
+1000 Hz will be used by default.
+.TP
+.B \-l <level>
+Output the tone at \fI<level>\fP dB below the maximum output level.  If not
+specified, a level of 0 dB will be used --i.e. maximum output level.
+.TP
+.B \-c left|right|both
+Output the tone on the corresponding channel(s).  If not specified, the tone
+will be output on both channels.
+.TP
+.B \-p norm|rev
+If given as \fBnorm\fP, the tone will be output with both channels in phase.
+If \fBrev\fP, then channels will be 180 degrees out of phase.
+.TP
+.B \-t <secs>
+Output the tone for \fI<secs>\fP seconds.  If not specified, the tone will be
+output until the INT key (most often CNTL-C) is pressed.
+.SH NOTES
+The range of tones supported by \fBagen\fP is limited by the hardware 
+capabilities of the audio \fI<device>\fP.  With modern audio hardware, 
+it should be possible to output in the range 20 Hz - 20 kHz easily.
+.SH TODO
+\fBAgen\fP's functionality should really be merged into
+.BR wavgen (1)
+.
+.SH AUTHOR
+Fred Gleason <fredg@wava.com>
+.SH SEE ALSO
+.BR wavgen (1)

@@ -1,0 +1,33 @@
+.TH infowav 1 "October 1999" Linux "Linux Audio Manual"
+.SH NAME
+infowav \- WAV File Playback and Analysis Tool
+.SH SYNOPSIS
+.B infowav [-v][-i][-l][-p <dsp-dev>] <wav-file>
+
+.SH DESCRIPTION
+\fBInfowav\fP is a command-line tool for analyzing audio files in the
+Microsoft WAV format.  Both basic and extended attribute information can
+be viewed, as well as playback of the actual audio.
+
+.SH OPTIONS
+.TP
+.B \-v
+Print a version identifier and then exit.
+.TP
+.B \-i
+Print basic audio format information, such as sample rate, sample size, etc.
+.TP
+.B \-l
+Print extended list attribute information.
+.TP
+.B \-p <dsp-dev>
+Play the audio, using \fI<dsp-dev>\fP as the playback device.  If not 
+specified, \fI/dev/dsp\fP will be used by default.
+.SH NOTES
+The meaning of fields in the extended list attributes tend to be very
+vendor-dependent.
+.SH TODO
+Currently, \fBinfowav\fP is capable of fully deciphering only files in 
+Linear PCM format.  MP3 support would be a Good Thing.
+.SH AUTHOR
+Fred Gleason <fredg@wava.com>

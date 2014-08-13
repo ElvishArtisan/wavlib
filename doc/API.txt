@@ -1,0 +1,169 @@
+int IsWav(int hFilename)
+
+This function tests the file associated with the file descriptor 'hFilename'
+to determine if it is a valid 'wav' file.
+
+RETURNS:     TRUE if a 'wav' file.
+	     FALSE if not a 'wav' file.
+
+NOTE: IsWav works by checking for the presence of the 'RIFF' and 'WAVE' 
+markers in the file.  It does *not* guarantee that the file is otherwise
+correctly formatted.
+
+
+
+int OpenWav(char *sFilename,struct wavHeader *wavFilename)
+
+This function opens the 'wav' file pointed to by 'sFilename'.  Information
+regarding the file is loaded into the structure pointed bo by 'wavFilename'.
+
+RETURNS:      If successful, the file descriptor for the open file.
+	      If error, a negative integer
+
+
+
+int CreateWav(char *sFilename,struct wavHeader *wavHeader)
+
+This function creates a new 'wav' file, using the filename pointed to by
+'sFilename'.  CreateWav performs the following steps:
+
+   1) The file is created.  If the file already exists, the data within it will
+      be destroyed.
+   2) The WAVE header is written and initialized for a zero file length.
+   3) The 'fmt' chunk is written, using data provided in the structure
+      pointed to by 'wavHeader'.
+   4) The 'fact' chunk is written and initialized for zero samples.
+   5) The 'data' chunk is written and initialized for zero bytes.
+   6) The file pointer is positioned at the end of the file (ready for
+      writing audio sample data). 
+
+After writing audio sample data into the file, the FixWav() function should be
+called to properly update the 'fact' and 'data' chunks.
+
+RETURNS:      If successful, the file descriptor associated with the open file.
+	      If error, a negative integer.
+
+NOTE:	      At present, the only bit format supported is WAVE_FORMAT_PCM.
+
+
+
+int FixWav(int hFilename,unsigned dSamples,unsigned dBytes)
+
+This function should be called after writing audio sample data into the 'data'
+chunk, with 'dSamples' containing the number of audio sample written and
+'dBytes' the number of bytes written.  The file remains open after the call.
+
+It updates the following data structures:
+
+   1) The file-size counter in the WAVE header.
+   2) The sample-size counter in the 'fact' chunk.
+   3) The byte-size counter in the 'data' chunk.
+
+RETURNS:  If successfule, zero.
+	  If error, a negative integer.
+
+
+
+
+int FindChunk(int hFilename,struct wavChunk *wavChunk)
+
+This function finds the chunk specified by the 'sName' member of the
+structure pointed to by 'wavChunk' in the file associated with 'hFilename'.
+The 'wavChunk' structure's other members will be filled out to reflect other
+information about the chunk.  The file pointer will also point to the beginning
+of the chunk.
+
+RETURNS:	If successful, zero.
+		If error, a negative integer.
+
+
+
+int GetNextChunk(int hFilename,structwavChunk *wavChunk)
+
+This function retrieves information regarding the chunk pointed to by the
+file pointer.  The chunk information will be filled out in the structure
+pointed to by 'wavChunk'.  The file pointer will be advanced to the start of 
+the next chunk in the file.
+
+RETURNS:       If successful, zero
+	       If error or end-of-file, a negative integer
+
+
+
+int GetListChunk(int hFilename,struct wavList *wavList)
+
+This function retrieves the contents of the 'LIST' chunk, putting the
+information in the structure pointed to by 'wavList'.
+
+RETURNS:       If successful, zero.
+	       If error, a negative integer.
+
+
+
+
+int SetDspDesc(int hAudio,struct wavHeader *wavHeader)
+
+This function sets the parameters of the DSP interface associated with the
+file descriptor 'hAudio' to those indicated by 'wavHeader'.
+
+RETURNS:	If successful, zero.
+		If error, a negative integer.
+
+
+
+int PlayWavFile(char *sFilename,char *sAudioDev,unsigned dOptions);
+
+This function plays the 'wav' file pointed to by 'sFilename' on the DSP
+device pointed to by 'sAudioDev' using the options indicated by 'dOptions'.
+
+RETURNS:       If successful, zero.
+	       If error, a negative integer.
+
+OPTIONS:       WAVLIB_TEST	    Verify that the specified file is
+				    playable, but do not actually play it.
+
+
+
+int PlayWavDesc(char *sFilename,int hAudio,unsigned dOptions);
+
+This function plays the 'wav' file pointed to by 'sFilename' on the DSP
+device associated with the file descriptor 'hAudio', using the options 
+indicated by 'dOptions'.
+
+RETURNS:       If successful, zero.
+	       If error, a negative integer.
+
+OPTIONS:       WAVLIB_TEST	    Verify that the specified file is
+				    playable, but do not actually play it.
+
+
+
+int RecWavFile(char *sFilename,char *sAudioDev,unsigned dSeconds,
+               unsigned short dChannels,unsigned ldSamplesPerSec,
+	       unsigned short dBitsPerSample,unsigned dOptions)
+
+This function records a 'wav' file using a format encoding of WAVE_FORMAT_PCM
+of the name pointed to by 'sFilename', using the DSP device pointed to by 
+'sAudioDev' with the options indicated by 'dOptions'.  The audio will be 
+recorded for 'dSeconds' seconds, using 'dChannels' channels, 'ldSamplesPerSec'
+samples/sec and 'dBitsPerSample' bits/sample.
+
+RETURNS:    If successful, zero.
+	    If error, a negative integer.
+
+
+
+int RecWavDesc(char *sFilename,int hAudio,unsigned dSeconds,
+               unsigned short dChannels,unsigned ldSamplesPerSec,
+	       unsigned short dBitsPerSample,unsigned dOptions)
+
+This function records a 'wav' file using a format encoding of WAVE_FORMAT_PCM
+of the name pointed to by 'sFilename', using the DSP device associated with
+the file descriptor 'hAudio', with the options indicated by 'dOptions'.  The audio will be recorded for 'dSeconds' seconds, using 'dChannels' channels, 
+'ldSamplesPerSec' samples/sec and 'dBitsPerSample' bits/sample.
+
+RETURNS:    If successful, zero.
+	    IF error, a negative integer.
+
+
+

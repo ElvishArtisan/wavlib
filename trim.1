@@ -1,0 +1,25 @@
+.TH trim 1 "May 2000" Linux "Linux Audio Manual"
+.SH NAME
+trim \- Autotrim Wav Files
+.SH SYNOPSIS
+.B trim [-v][-e][-t <thres-level>] <wav-file>
+
+.SH DESCRIPTION
+\fBTrim\fP is a tool for removing extraneous silence from the end of audio
+wav files.
+
+.SH OPTIONS
+.TP
+.B \-v
+Print a version identifier and then exit.
+.TP
+.B \-e
+The 'endtrim' command.  Remove audio from the end of the wav file.
+.TP
+.B \-t
+Set the trim threshold level, in dB below digital zero.  \fBTrim\fP will
+remove all audio between the last occurance of this level in the file and the
+file's end.
+.
+.SH AUTHOR
+Fred Gleason <fredg@wava.com>

@@ -1,0 +1,40 @@
+.TH nmix 1 "October 1999" Linux "Linux Audio Manual"
+.SH NAME
+nmix \- Standard OSS Audio Mixer Control Tool
+.SH SYNOPSIS
+.B nmix [-e][-rs|-rc <rec-dev>][-s <control> <left>[:<right>]] <device>
+.SH DESCRIPTION
+\fBNmix\fP is a command-line tool for querying and
+manipulating the controls of a standard OSS-compliant audio mixer.
+
+.SH OPTIONS
+.TP
+.B \-e
+Enumerate the mixer capabilities and settings.  This is the default action.
+.TP
+.B \-rs <rec-dev>
+Add \fI<rec-dev>\fP to the list of record devices.  NOTE: some audio adapters
+do not support more than one assigned record device at a time.  In that case, 
+\fI<rec-dev>\fP will become the record device.
+.TP
+.B \-rc <rec-dev>
+Remove \fI<rec-dev>\fP from the list of record devices.  If <rec-dev> is the 
+only assigned recording device, the record device will be switched to 
+\fBmic\fP.
+.TP
+.B \-s <control> <left>[:<right>]
+Set the mixer control \fI<control>\fP to the value \fI<left>:<right>\fP for 
+the left and right channels respectively.  If only \fI<left>\fP is given, 
+then that value will be applied to both channels.  If the control does not 
+support stereo, than only the \fI<left>\fP value will be used.
+
+.SH NOTES
+A list of available controls and record devices can be printed by invoking
+\fBnmix\fP with the \fB-e\fP option.
+
+\fBNmix\fP is compatible only with sound drivers that implement the Open Sound
+System (OSS) API.  This means that it will likely \fInot\fP work correctly 
+with many professional-grade audio adapters.
+
+.SH AUTHOR
+Fred Gleason <fredg@wava.com>

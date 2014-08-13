@@ -1,0 +1,39 @@
+.TH wavgen 1 "October 1999" Linux "Linux Audio Manual"
+.SH NAME
+wavgen \- Test Wavefile Generator
+.SH SYNOPSIS
+.B wavgen [-v][-f <freq>][-l <level>][-c left|right|both][-p norm|rev]\
+-t <secs> <wav-file>
+
+.SH DESCRIPTION
+\fBWavgen\fP is a command-line tool for producing audio test wavefiles, 
+consisting of steady-state tones.
+
+.SH OPTIONS
+.TP
+.B \-v
+Print a version identifier and then exit.
+.TP
+.B \-f <freq>
+Produce a file with a tone of frequency \fI<freq>\fP Hz.  If not specified, 
+a frequency of 1000 Hz will be used by default.
+.TP
+.B \-l <level>
+Produce a file with a tone at \fI<level>\fP dB below the maximum output level.
+If not specified, a level of 0 dB will be used --i.e. maximum output level.
+.TP
+.B \-c left|right|both
+Produce a file with a tone on the corresponding channel(s).  If not specified,
+the tone will be recorded on both channels.
+.TP
+.B \-p norm|rev
+If given as \fBnorm\fP, the tone will be recorded with both channels in phase.
+If \fBrev\fP, then the channels will be 180 degrees out of phase.
+.TP
+.B \-t <secs>
+Generate a file \fI<secs>\fP long.  
+
+.SH AUTHOR
+Fred Gleason <fredg@wava.com>
+.SH SEE ALSO
+.BR agen (1)

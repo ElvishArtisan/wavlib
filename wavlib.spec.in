@@ -1,0 +1,76 @@
+Summary: The WavLib Audio Utility Package
+Name: wavlib
+Version: %PKG_VERSION%
+Release: %RPM_RELEASE%
+License: GPL
+Group: Productivity/Multimedia/Other
+Source: ftp://ftp.salemradiolabs.com/pub/srlabs/wavlib/wavlib-%PKG_VERSION%.tar.gz
+BuildRoot: /var/tmp/wavlib-%PKG_VERSION%
+
+%description
+WavLib is a package of command-line audio tools useful for setting up,
+testing and manipulating audio files and devices.
+
+%prep
+%setup
+./configure --prefix=$RPM_BUILD_ROOT/usr/local
+
+%build
+make
+
+%install
+rm -rf $RPM_BUILD_ROOT
+mkdir -p $RPM_BUILD_ROOT/usr/local/bin
+cp agen $RPM_BUILD_ROOT/usr/local/bin
+cp ameter $RPM_BUILD_ROOT/usr/local/bin
+cp aproc $RPM_BUILD_ROOT/usr/local/bin
+cp infowav $RPM_BUILD_ROOT/usr/local/bin
+cp mptrim $RPM_BUILD_ROOT/usr/local/bin
+cp nmix $RPM_BUILD_ROOT/usr/local/bin
+cp recwav $RPM_BUILD_ROOT/usr/local/bin
+cp trim $RPM_BUILD_ROOT/usr/local/bin
+cp wavgen $RPM_BUILD_ROOT/usr/local/bin
+
+mkdir -p $RPM_BUILD_ROOT/usr/local/man/man1
+cp agen.1 $RPM_BUILD_ROOT/usr/local/man/man1
+cp ameter.1 $RPM_BUILD_ROOT/usr/local/man/man1
+cp aproc.1 $RPM_BUILD_ROOT/usr/local/man/man1
+cp infowav.1 $RPM_BUILD_ROOT/usr/local/man/man1
+cp mptrim.1 $RPM_BUILD_ROOT/usr/local/man/man1
+cp nmix.1 $RPM_BUILD_ROOT/usr/local/man/man1
+cp recwav.1 $RPM_BUILD_ROOT/usr/local/man/man1
+cp trim.1 $RPM_BUILD_ROOT/usr/local/man/man1
+cp wavgen.1 $RPM_BUILD_ROOT/usr/local/man/man1
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%files
+%defattr(-,root,root)
+%doc History ChangeLog doc/API.txt doc/ListChunk.txt
+/usr/local/bin/agen
+/usr/local/bin/ameter
+/usr/local/bin/aproc
+/usr/local/bin/infowav
+/usr/local/bin/mptrim
+/usr/local/bin/nmix
+/usr/local/bin/recwav
+/usr/local/bin/trim
+/usr/local/bin/wavgen
+/usr/local/man/man1/agen.1
+/usr/local/man/man1/ameter.1
+/usr/local/man/man1/aproc.1
+/usr/local/man/man1/infowav.1
+/usr/local/man/man1/mptrim.1
+/usr/local/man/man1/nmix.1
+/usr/local/man/man1/recwav.1
+/usr/local/man/man1/trim.1
+/usr/local/man/man1/wavgen.1
+
+%changelog
+* Fri May 27 2008 Fred Gleason <fredg@paravelsystems.com>
+-- Removed the 'gz' suffix from the man page entries.
+* Tue May 06 2008 Fred Gleason <fredg@paravelsystems.com>
+-- Changed the 'Copyright:' tag to 'License:'.
+* Thu Jun 23 2005 Fred Gleason <fredg@salemradiolabs.com>
+-- Initial RPM creation.

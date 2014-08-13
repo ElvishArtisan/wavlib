@@ -1,0 +1,31 @@
+.TH aproc 1 "November 1999" Linux "Linux Audio Manual"
+.SH NAME
+aproc \- Software Audio Processor for WAV Files
+.SH SYNOPSIS
+.B aproc [-v][-o <wav-file>] -N <dBd> <wav-file>
+
+.SH DESCRIPTION
+\fBAproc\fP is a command-line tool for applying certain types of audio
+processing operations to audio data in WAV formatted files.  Currently, only
+one processing operation (normalization) is supported.  By default, the 
+processed audio is written back into the original WAV file, although this
+behavior can be changed through use of the \fB-o\fP option (see below).
+
+.SH OPTIONS
+.TP
+.B \-v
+Print a version identifier and then exit.
+.TP
+.B \-N <dBd>
+Normalize the audio to a level <dBd> dB below digital zero.
+.TP
+.B \-o <wav-file>
+Write the processed audio out to the specified WAV file, rather than applying
+the changes to the original.  The new WAV file will have the same sample-rate,
+sample-size and sampling format as the original.
+.SH TODO
+Currently \fBaproc\fP only supports WAV files with the format of 16 bit
+PCM Linear.
+.
+.SH AUTHOR
+Fred Gleason <fredg@wava.com>

@@ -1,0 +1,40 @@
+.TH recwav 1 "May 2000" Linux "Linux Audio Manual"
+.SH NAME
+recwav \- WAV File Recording Tool
+.SH SYNOPSIS
+.B recwav [-v][-i][-l][-p <dsp-dev>] <wav-file>
+
+.SH DESCRIPTION
+\fBRecwav\fP is a command-line tool for recording audio files in the
+Microsoft WAV format.
+
+.SH OPTIONS
+.TP
+.B \-v
+Print a version identifier and then exit.
+.TP
+.B \-t <length>
+Make a recording <length> seconds long.  If no length is specified, the 
+recording will continue until the INTERRUPT key (typically CNTL-C) is
+pressed.
+.TP
+.B \-d <dsp-dev>
+Use \fI<dsp-dev>\fP as the recording device.  If not specified, \fI/dev/dsp\fP
+will be used by default.
+.TP
+.B \-r <samp-rate>
+Record using a sampling rate of \fI<samp-rate>\fP samples per second.  If not 
+specified, a sampling rate of 44,100 samples per second will be used
+by default.
+.TP
+.B \-s <samp-size>
+Record using a sample size of \fI<samp-size>\fP bits per sample.  If not
+specified, a sample size of 16 bits per sample will be used by default.
+.TP
+.B \-c 1|2
+Record using 1 or 2 channels.
+.SH TODO
+Currently, \fBrecwav\fP is capable of recording audio only in
+Linear PCM format.  MPEG support would be a Good Thing.
+.SH AUTHOR
+Fred Gleason <fredg@wava.com>

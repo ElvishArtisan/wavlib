@@ -1,0 +1,63 @@
+                    History file for the WAVLIB Project
+
+-------------------------------------------------------------------------------
+11/20/1999
+Start of history file
+
+Current released version is 2.2.2
+
+Added the aproc(1) command, a command-line audio processor for wav files.
+Currently, it only supports the 'normalize' function (-N), but is intended
+as a catch-all for adding additional processing features as needed through
+addition of additional command flags.
+
+Added a man page for the aproc(1) command.
+
+Fixed a bug in OpenWav() that was causing the file pointer to not be
+pointing at the start of the wave data at function return with certain 
+combinations of chunks. 
+
+Fixed a typo in the ameter(1) man page.
+-------------------------------------------------------------------------------
+
+12/1/1999 -- v 2.3.1
+Added a conditional definition of PI (definition is missing from glibc).
+-------------------------------------------------------------------------------
+
+5/18/2000 -- v 2.4.0
+
+Cleaned up code in ameter(1) so that levels are now displayed in true 
+logarithmic dB.
+
+Added a '-l' option to ameter(1) to allow the user to set the meter reference
+level
+
+Added color to ameter(1), with a green and red segment.  Added a '-t' option
+to allow the user to define where the border should be.
+
+Updated the ameter(1) man page.
+
+Fixed a bug in infowav(1) that was causing it to corrupt wav files when invoked
+with the '-p' while omitting the audio-device name that customarily follows it.
+
+Fixed a bug in infowav(1) that was causing extraneous output to be printed.
+
+Added a '-t' option to recwav(1) to allow the user to specify a record length.
+
+Updated the recwav(1) man page.
+
+Added a TailTrim() API call to remove audio below a given set threshold level
+from the end of an existing wav file.
+-------------------------------------------------------------------------------
+
+5/18/2000 -- v 2.4.1
+
+Restored the RecordWavFile() API call, which somehow got dropped out of
+v2.4.0.
+-------------------------------------------------------------------------------
+
+5/23/2000 -- v 2.4.2
+
+Fixed a fencepost bug in TailTrim() that was causing false positive 
+threshold detects on certain wav files.
+-------------------------------------------------------------------------------

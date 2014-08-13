@@ -1,0 +1,32 @@
+.TH mptrim 1 "June 2005" Linux "Linux Audio Manual"
+.SH NAME
+mptrim \- Trim MPEG files to length.
+.SH SYNOPSIS
+.B mptrim [-v][-s <start-offset>][-e <end-offset>] <src-file> <dest-file>
+
+.SH DESCRIPTION
+\fBMptrim\fP is a tool for trimming audio from the beginning and/or
+end of MPEG audio files.
+
+.SH OPTIONS
+.TP
+.B \-v
+Print a version identifier and then exit.
+.TP
+.B \-s <start-offset>
+Specify the offset, in tenths of a second, from the start of the
+source file, to the desired start point of the destination file.  If
+omitted, the destination file's start will not be changed.
+.TP
+.B \-e <end-offset>
+Specify the offset, in tenths of a second, from the start of the
+source file, to the desired end point of the destination file.  If
+omitted, the destination file's end will not be changed.
+
+.SH BUGS
+\fBMptrim(1)\fP will be horribly confused and probably fail to work if a
+source file contains ID3 tags.
+
+.
+.SH AUTHOR
+Fred Gleason <fredg@salemradiolabs.com>
